@@ -1,0 +1,9 @@
+.fade-enter-active, .fade-leave-active {
+  transform: translateX(0%);
+  /* transition: opacity 1.5s; */
+  transition: all 1.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8*/ {
+  transform: translateX(30%);
+  opacity: 0;
+}
