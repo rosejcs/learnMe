@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+
+    <span v-once>{{ msg }}</span>
+
+
+
+    <!-- 元素 -->
+    <p>using mustaches: {{ rawHtml }}</p>
+    <p>Using v-html directive: <span v-html="rawHtml">{{msg}}</span></p>
+  </div>
+
+
+  <script>
+    
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        msg:"once change",
+        rawHtml:"<span>test</span>"
+
+      }
+    })
+    
+  </script>
+</body>
+</html>
