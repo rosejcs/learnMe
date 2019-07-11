@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 可以使用对象和数组 -->
+      <div v-bind:class="{ active: isActive }"></div>
+      <!-- 当isActive或者hasError变化是，class列表将相应地更新。如：ha'sError的值为true，class列表将变为'static active text-danger'. -->
+
+      <div 
+        class="static"
+        v-bind:class="{ active: isActive, 'text-danger': hasError }">
+      </div>
+      <!-- 绑定的数据对象不必内联定义在模板里： -->
+      <div v-bind:class="classObject"></div>
+
+
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el:"#app",
+        data:{
+          isActive: true,
+          hasError: false,
+          classObject:{
+            active: true,
+            'text-danger':false
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
