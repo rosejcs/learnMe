@@ -9,20 +9,23 @@
   </head>
   <body>
     <div id="app">
-      <div v-bind:style="{
+      <div
+        v-bind:style="{
         color:activeColor,fontSize:fontSize + 'px'
-      }">1</div>
+      }"
+      >
+        1
+      </div>
     </div>
 
     <script>
       var vm = new Vue({
-        el:"#app",
-        data:{
-          activeColor:'red',
+        el: "#app",
+        data: {
+          activeColor: "red",
           fontSize: 30
         }
-      })
-    
+      });
     </script>
   </body>
 </html>
