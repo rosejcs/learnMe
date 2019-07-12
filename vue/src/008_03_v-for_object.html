@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="value in userProfile">{{ value }}</li>
+      </ul>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el:'#app',
+        data: {
+          userProfile: {
+            name: 'Anika'
+          }
+        },
+        created() {
+          this.add1()
+          this.addMore()
+        },
+        methods:{
+          // 对于已经创建的实例,Vue不允许动态添加根级别的响应式属性,但是可以使用Vue.set(object,propertyName,value)方法向嵌套对象添加响应式属性.
+          add1() {
+            // Vue.set(vm.userProfile, 'age', 27)
+            Vue.set(this.userProfile, 'age', 27)
+            // vm.$set(vm.userProfile, propertyName, propertyValue)
+            this.$set(this.userProfile, 'hobby', 'koujiao')
+          },
+          // 有时候需要为已有对象赋值多个新属性,可使用Object.assign()或_.extend(),在这种情况下,应该用两个对象的属性创建一个新的对象.
+          addMore() {
+            // vm.userProfile = Object.assign({}, vm.userProfile,{              book:'goodtest',              favoriteColor:'Vue Green',})
+            this.userProfile = Object.assign({}, this.userProfile, {
+              book: 'goodtest',
+              favoriteColor: 'Vue Green'
+            })
+          }
+        },
+      })
+      Vue.set(vm.userProfile, 'habbit', 'play')
+    </script>
+  </body>
+</html>

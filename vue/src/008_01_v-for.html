@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 列表渲染--数组的所有元素 -->
+      <ul style="list-style:none;">
+        <li v-for="item of items">{{ item.msg }}</li>
+      </ul>
+      <!-- 列表渲染--对象的所有属性 -->
+      <ul>
+        <li v-for="value in obj">{{ value }}</li>
+      </ul>
+      
+      
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el:'#app',
+        data: {
+          items:[
+            { msg: "msg1"},
+            { msg: "msg2"},
+            { msg: "msg3"},
+            { msg: "msg4"},
+          ],
+          obj: {
+            title:"How to do lists in Vue",
+            author:"Jane Doe",
+            publishedAt:"2016-04-10"
+          },
+        }
+      })
+    </script>
+  </body>
+</html>

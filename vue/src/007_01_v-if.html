@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-if -->
+      <h1 v-if="awesome">Vue is awesome!</h1>
+      <!-- v-else -->
+      <h1 v-else>Oh no</h1>
+      <!-- v-show
+      总是渲染,只是修改元素的display切换显示隐藏 -->
+      <!-- v-if
+      在初始渲染时,如条件为假,则不渲染,条件变真时才渲染,相比v-show有更高的切换开销,但是可以用来解决图片加载过慢导致的404问题        
+       -->
+      
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el:'#app',
+        data:{
+          awesome: false,
+        }
+      })
+    </script>
+  </body>
+</html>
