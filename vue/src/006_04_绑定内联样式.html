@@ -11,19 +11,25 @@
     <div id="app">
       <div
         v-bind:style="{
-        color:activeColor,fontSize:fontSize + 'px'
+        color:activeColor,fontSize:fontSize + 'px',transform:transformSty
       }"
       >
         1
       </div>
+      <!-- 数组语法 -->
+      <div v-bind:style="[baseStyles, overridingStyles]">2</div>
     </div>
+
 
     <script>
       var vm = new Vue({
         el: "#app",
         data: {
           activeColor: "red",
-          fontSize: 30
+          fontSize: 30,
+          transformSty:'translateX(10px)',
+          baseStyles:{color:'#369'},
+          overridingStyles:{fontSize: '40px'},
         }
       });
     </script>

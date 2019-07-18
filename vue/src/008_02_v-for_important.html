@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- vue不能检测以下数组的变动
+      1.当你利用索引直接设置一个数组时,ex:
+      vm.items[indexOfItem] = newValue
+      2.当你修改数组的长度时,ex:
+      vm.items.length = newLength-->
+      <ul>
+        <li v-for="item of items">{{ item }}</li>
+      </ul>
+      
+
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el:"#app",
+        data:{
+          items:[
+            'a','b','c'
+          ]
+        },
+        created(){
+          this.solve1();
+          this.solve2();
+          this.solve1_1()
+          this.solveII()
+        },
+        methods:{
+          // 针对第一种问题,以下两种方式可以实现vm.items[indexOfItem] = newValue相同的效果,同时也将在响应式系统内触发状态更新
+          // 方法1 Vue.set
+          solve1() {
+            // Vue.set(vm.items,indexOfItem,newValue)
+            Vue.set(this.items,1,'x')
+          },
+          // 也可以使用vm.$set实例方法,该方法时全局方法Vue.set的别名:
+          solve1_1(){
+            // vm.$set(vm.items, indexOfItem, newValue)
+            this.$set(this.items, 1, 'I')
+          },
+          // 方法2 Array.prototype.splice
+          solve2() {
+            // this.items.splice(indexOfItem,1,newValue)
+            this.items.splice(2, 1, 'y')
+          },
+          // 为了解决第二中问题,可以使用splice
+          solveII(){
+            // vm.items.splice(newLength);
+            this.items.splice(2);
+          }
+        },
+      })
+    </script>
+  </body>
+</html>
