@@ -24,6 +24,7 @@
 
     <script>
       // 定义一个名为 button-counter 的新组件
+       // 命名规则直接在 DOM (即非字符串的模板) 中使用时只有 kebab-case 是有效的
       Vue.component('button-counter', {
         // 组件中的data必须是一个函数,因此每个实例可以维护一份被返回对象的独立的拷贝
         data:function () {
@@ -31,6 +32,7 @@
             count: 0
           }
         },
+       
         template: '<button v-on:click="count++">U clicked me {{ count }} items.</>'
       })
      
