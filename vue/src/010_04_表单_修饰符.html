@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 
+        在'change'时而非'input'时更新
+        即类似于blur时和实例数据更新
+      -->
+      <input v-model.lazy="msg" />
+      <span>{{ msg }}</span>
+      <br />
+      <!-- 
+        如果想自动将用户的输入值转为数值类型,可以给v-model添加number修饰符:
+       -->
+       <input v-model.number="age">
+       <span>{{ typeof age }}</span>
+       <!-- .trim -->
+       <!-- 自动过滤用户输入的首尾空白字符,可以给v-model添加trim修饰符 -->
+       <input v-model.trim="msg">
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "hello",
+          age:10,
+        }
+      });
+    </script>
+  </body>
+</html>

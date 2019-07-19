@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+  </head>
+  <body>
+    <!-- 单选按钮 radio 同组的单选v-model的值须相同-->
+    <div id="app">
+      <input type="radio" id="one" value="One" v-model="picked" />
+      <label for="one">One</label>
+      <br />
+      <input type="radio" id="two" value="Two" v-model="picked" />
+      <label for="two">Two</label>
+      <br />
+      <span>Picked: {{ picked }}</span>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          picked: ""
+        }
+      });
+    </script>
+  </body>
+</html>

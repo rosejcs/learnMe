@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+  </head>
+  <body>
+    <!-- v-model 会忽略所有表单元素的 value \ checked \ selected 特性的初始值而总是讲Vue实例的数据作为数据来源. -->
+    <!-- 
+    text 和 textarea 元素使用value属性和input事件;
+    checkbox 和 radio 使用 checked属性和 change事件
+    select字段将 value 作为prop并将 change 作为事件.
+    -->
+    <div id="app">
+      <input v-model="message" palceholder="edit me" />
+      <p>Message is: {{ message }}</p>
+
+      <!-- 
+        在textarea中插值不会生效,需要使用v-model
+        <textarea>{{ text }}</textarea> X
+        <textarea v-model="text"></textarea>
+       -->
+      <textarea>{{ text }}</textarea>
+      <textarea v-model="text"></textarea>
+      <!-- 复选框 -->
+      <!-- 单个 -->
+      <input type="checkbox" id="checkbox" v-model="checked" />
+      <label for="checkbox">{{ checked }}</label>
+      <!-- 多个复选框,绑定到同一个数组 -->
+      <div>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames" />
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames.length>0 ? checkedNames : null }}</span>
+      </div>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          message: "",
+          text: "123",
+          checked: false,
+          checkedNames:[],
+        }
+      });
+    </script>
+  </body>
+</html>
