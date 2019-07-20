@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./vue.min.js"></script>
+  </head>
+  <body>
+    <!-- 传递静态或动态Prop -->
+    <div id="app">
+      <blog-post title="My journey with Vue"></blog-post>
+      <!-- 动态赋予一个变量的值 -->
+      <blog-post v-bind:title="post.title"></blog-post>
+
+      <!-- 动态赋予一个复杂表达式的值 -->
+      <blog-post v-bind:title="post.title+'by'+post.author.name"></blog-post>
+    </div>
+
+    <script>
+      Vue.component('blog-post', {
+        data:function() {
+          return {
+            post:{
+              title:"proptitle",
+              author:{
+                name:"tom"
+              }
+            },
+          }
+        },
+        template:'<p>a template get prop</p>'
+      })
+      
+      var vm = new Vue({
+        el:"#app",
+        // data:{}
+      })
+    </script>
+
+
+
+  </body>
+</html>
